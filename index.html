@@ -811,40 +811,35 @@
           <section class="contact-form">
             <h3 class="h3 form-title">Contact Form</h3>
 
-            <form onsubmit="sendEmail(); reset (); return false;" data-form>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="fullname"
-                  id="fullname"
-                  class="form-input"
-                  placeholder="Full name"
-                  required
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="form-input"
-                  placeholder="Email address"
-                  required
-                />
-              </div>
-
-              <textarea
-                name="message"
-                id="message"
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="fullname"
                 class="form-input"
-                placeholder="Your Message"
+                placeholder="Full name"
                 required
-              ></textarea>
+              />
 
-              <button class="form-btn" type="submit">
-                <ion-icon name="paper-plane"></ion-icon>
-                <span>Send Message</span>
-              </button>
-            </form>
+              <input
+                type="email"
+                id="email"
+                class="form-input"
+                placeholder="Email address"
+                required
+              />
+            </div>
+
+            <textarea
+              id="message"
+              class="form-input"
+              placeholder="Your Message"
+              required
+            ></textarea>
+
+            <button class="form-btn" onclick="sendMail()">
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
           </section>
         </article>
       </div>
@@ -855,24 +850,15 @@
   -->
     <script src="./assets/js/script.js"></script>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
 
-    <script>
-      function sendEmail() {
-        Email.send({
-          SecureToken: "c20f9e65-7fe0-41ae-8097-971335621fb6",
-          To: 'billy.sistianputra@gmail.com',
-          From: document.getElementById("email").value,
-          Subject: "This is the subject",
-          Body:
-            "Name: " +
-            document.getElementById("fullname").value +
-            "<br> Email: " +
-            document.getElementById("email").value +
-            "<br> Message: " +
-            document.getElementById("message").value,
-        }).then((message) => alert("message sent successfully"));
-      }
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("LgPj-k91Zev4Fm1EC");
+      })();
     </script>
 
     <!--
